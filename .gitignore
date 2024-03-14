@@ -5,3 +5,7 @@ __pycache__
 *.pyc
 log
 *.log
+*.swp
+*.bin
+*.gz
+*.h5
