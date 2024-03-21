@@ -9,3 +9,6 @@ log
 *.bin
 *.gz
 *.h5
+*.png
+results
+results_uppsala_kiruna
