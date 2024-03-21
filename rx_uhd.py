@@ -337,7 +337,7 @@ def main(ic):
     t_now=usrp.get_time_now().get_real_secs()
     t_now_dt = datetime.fromtimestamp(t_now)
     # add 5 secs for setup time
-    t0=np.uint64(np.floor((t_now+5.0)/(s.sweep_len_s))*s.sweep_len_s+s.sweep_len_s)
+    t0=np.uint64(np.floor((t_now+5.0)/(s.sweep_len_s))*s.sweep_len_s+s.sweep_len_s+60)
     t0_dt = datetime.fromtimestamp(t0)
     print(
         "starting next sweep at %1.2f (%s) in %1.2f s, time now %1.2f (%s)"

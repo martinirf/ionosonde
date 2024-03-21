@@ -72,7 +72,7 @@ def analyze_latest_sweep(ic, data_path="/dev/shm"):
     # figure out what cycle is ready
     s=ic.s
     n_rg=ic.n_range_gates
-    t0=n.uint64(n.floor(time.time()/(s.sweep_len_s))*ic.s.sweep_len_s-ic.s.sweep_len_s)
+    t0=n.uint64(n.floor(time.time()/(s.sweep_len_s))*ic.s.sweep_len_s-ic.s.sweep_len_s+60)
 
     sfreqs=n.array(ic.s.freqs)
     iono_freqs=sfreqs[:, 0]
@@ -212,7 +212,9 @@ def analyze_latest_sweep(ic, data_path="/dev/shm"):
 
     plt.figure(figsize=(1.5*8, 1.5*6))
     max_dB=n.nanmax(dB)
-    plt.pcolormesh(n.concatenate((iono_p_freq, [fmax+0.1])),
+    #    plt.pcolormesh(n.concatenate((iono_p_freq, [fmax+0.1])),
+    #                   rvec-ic.range_shift*1.5, dB, vmin=0, vmax=ic.max_plot_dB)
+    plt.pcolormesh(iono_p_freq,
                    rvec-ic.range_shift*1.5, dB, vmin=0, vmax=ic.max_plot_dB)
     plt.title("%s %s UT\nnoise_floor=%1.2f (dB) peak SNR=%1.2f"
               % (ic.instrument_name, stuffr.unix2datestr(t0), noise_floor_0, max_dB))

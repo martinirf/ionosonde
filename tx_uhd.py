@@ -194,8 +194,9 @@ def main(config):
 
     # figure out when to start the cycle
     t_now=usrp.get_time_now().get_real_secs()
-    t0=n.uint64(n.floor(t_now/(s.sweep_len_s))*s.sweep_len_s+s.sweep_len_s)
-    print("starting next sweep at %1.2f" % (s.sweep_len_s))
+    t0=n.uint64(n.floor(t_now/(s.sweep_len_s))*s.sweep_len_s+s.sweep_len_s+60)
+    t0_dt = datetime.fromtimestamp(t0)
+    print("Starting next sweep at %1.2f (%s)" % (t0, t0_dt.strftime("%FT%T.%f")[:-3]))
 
     gpio_state=0
     while not Exit:
